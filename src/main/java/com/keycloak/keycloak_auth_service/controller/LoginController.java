@@ -1,5 +1,6 @@
 package com.keycloak.keycloak_auth_service.controller;
 
+import com.keycloak.keycloak_auth_service.dto.response.TokenDto;
 import com.keycloak.keycloak_auth_service.service.KeycloakService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +24,8 @@ public class LoginController {
     }
 
     @PostMapping("/getToken")
-    public ResponseEntity<?> getToken(@RequestParam String username, @RequestParam String password) {
-        String token = keycloakService.getToken(username, password);
-        return ResponseEntity.ok(token);
+    public ResponseEntity<TokenDto> getToken(@RequestParam String username, @RequestParam String password) {
+        return ResponseEntity.ok(keycloakService.getToken(username, password));
     }
 
 

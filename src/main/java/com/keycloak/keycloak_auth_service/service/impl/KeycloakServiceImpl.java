@@ -1,5 +1,6 @@
 package com.keycloak.keycloak_auth_service.service.impl;
 
+import com.keycloak.keycloak_auth_service.dto.response.TokenDto;
 import com.keycloak.keycloak_auth_service.service.KeycloakService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,9 +26,12 @@ public class KeycloakServiceImpl implements KeycloakService {
     @Value("${app.keycloak.admin.clientId}")
     private String clientId;
 
+    @Value("${app.keycloak.admin.clientSecret}")
+    private String clientSecret;
+
 
     @Override
-    public String getToken(String username, String password) {
+    public TokenDto getToken(String username, String password) {
         RestTemplate restTemplate = new RestTemplate();
         String url = keycloakServerUrl + "/realms/" + realm + "/protocol/openid-connect/token";
 
@@ -39,10 +43,11 @@ public class KeycloakServiceImpl implements KeycloakService {
         map.add("client_id", clientId);
         map.add("username", username);
         map.add("password", password);
+        map.add("client_secret", clientSecret);
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
-        ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
+        ResponseEntity<TokenDto> response = restTemplate.postForEntity(url, request, TokenDto.class);
 
         return response.getBody();
     }

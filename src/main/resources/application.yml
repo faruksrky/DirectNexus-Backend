@@ -11,8 +11,8 @@ spring:
 
 server:
   port: 6700
-  servlet:
-    context-path: /auth
+
+
 
 app:
   keycloak:
