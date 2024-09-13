@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: keycloak-auth-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${app.keycloak.serverUrl}/realms/${app.keycloak.realm}
+          jwk-set-uri: ${app.keycloak.serverUrl}/realms/${app.keycloak.realm}/protocol/openid-connect/certs
+
+
+server:
+  port: 6700
+  servlet:
+    context-path: /auth
+
+app:
+  keycloak:
+    admin:
+      clientId: DN
+      clientSecret: 569t6SYrRdlt1EcfBOGPkQjkoph6lcBq
+    realm: DirectNexus
+    serverUrl: http://localhost:9082
