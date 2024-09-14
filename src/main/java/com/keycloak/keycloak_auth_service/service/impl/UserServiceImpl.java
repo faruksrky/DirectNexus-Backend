@@ -7,13 +7,17 @@ import lombok.RequiredArgsConstructor;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.UserResource;
 import org.keycloak.admin.client.resource.UsersResource;
+import org.keycloak.common.util.CollectionUtil;
 import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.keycloak.representations.idm.GroupRepresentation;
 import org.keycloak.representations.idm.RoleRepresentation;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Objects;
@@ -43,6 +47,10 @@ public class UserServiceImpl implements UserService {
         userRepresentation.setCredentials(List.of(credentialRepresentation));
 
         UsersResource usersResource = getUsersResource();
+        if(!CollectionUtils.isEmpty(usersResource.list()) &&
+                usersResource.list().stream().anyMatch(x-> x.getUsername().equals(newUserRecord.userName()))){
+            throw new ResponseStatusException(HttpStatus.CONFLICT,"Username already exists");
+        }
 
         try (Response response = usersResource.create(userRepresentation)) {
 

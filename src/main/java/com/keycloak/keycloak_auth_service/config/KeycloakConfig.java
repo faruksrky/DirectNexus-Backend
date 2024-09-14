@@ -21,13 +21,19 @@ public class KeycloakConfig {
     @Value("${app.keycloak.admin.clientSecret}")
     private String clientSecret;
 
+    @Value("${app.keycloak.adminClientId}")
+    private String adminClientId;
+
+
+    @Value("${app.keycloak.adminClientSecret}")
+    private String adminClientSecret;
+
 
     @Bean
     public Keycloak keycloak(){
         return KeycloakBuilder.builder()
                 .clientSecret(clientSecret)
                 .serverUrl(serverUrl)
-                .realm(realm)
                 .clientId(clientId)
                 .realm(realm)
                 .grantType("client_credentials")

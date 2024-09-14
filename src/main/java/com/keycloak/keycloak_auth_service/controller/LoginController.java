@@ -28,6 +28,11 @@ public class LoginController {
         return ResponseEntity.ok(keycloakService.getToken(username, password));
     }
 
+    @PostMapping("/getTokenAdmin")
+    public ResponseEntity<TokenDto> getTokenAdmin(@RequestParam String username, @RequestParam String password) {
+        return ResponseEntity.ok(keycloakService.getTokenAdmin(username, password));
+    }
+
 
 
 }

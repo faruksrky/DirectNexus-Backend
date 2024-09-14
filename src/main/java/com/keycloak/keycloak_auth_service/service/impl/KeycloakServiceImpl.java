@@ -29,6 +29,13 @@ public class KeycloakServiceImpl implements KeycloakService {
     @Value("${app.keycloak.admin.clientSecret}")
     private String clientSecret;
 
+    @Value("${app.keycloak.adminClientId}")
+    private String adminClientId;
+
+
+    @Value("${app.keycloak.adminClientSecret}")
+    private String adminClientSecret;
+
 
     @Override
     public TokenDto getToken(String username, String password) {
@@ -55,5 +62,27 @@ public class KeycloakServiceImpl implements KeycloakService {
     @Override
     public String refreshToken(String refreshToken) {
         return null;
+    }
+
+    @Override
+    public TokenDto getTokenAdmin(String username, String password) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = keycloakServerUrl + "/realms/" + realm + "/protocol/openid-connect/token";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+        map.add("grant_type", "password");
+        map.add("client_id", adminClientId);
+        map.add("username", username);
+        map.add("password", password);
+        map.add("client_secret", adminClientSecret);
+
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
+
+        ResponseEntity<TokenDto> response = restTemplate.postForEntity(url, request, TokenDto.class);
+
+        return response.getBody();
     }
 }
