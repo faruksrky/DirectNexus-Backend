@@ -18,6 +18,6 @@ app:
   keycloak:
     admin:
       clientId: DN
-      clientSecret: 569t6SYrRdlt1EcfBOGPkQjkoph6lcBq
+      clientSecret: j0t6IMje7f8uiLQ8zwl1U4CwrwYEYcn2
     realm: DirectNexus
     serverUrl: http://localhost:9082

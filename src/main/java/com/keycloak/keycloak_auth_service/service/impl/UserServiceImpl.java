@@ -44,14 +44,14 @@ public class UserServiceImpl implements UserService {
 
         UsersResource usersResource = getUsersResource();
 
-        Response response = usersResource.create(userRepresentation);
+        try (Response response = usersResource.create(userRepresentation)) {
 
+            if (!Objects.equals(201, response.getStatus())) {
 
-        if(!Objects.equals(201,response.getStatus())){
-
-            throw new RuntimeException("Status code "+response.getStatus());
+                throw new RuntimeException("Status code " + response.getStatus());
+            }
         }
-        
+
         List<UserRepresentation> userRepresentations = usersResource.searchByUsername(newUserRecord.userName(), true);
         UserRepresentation userRepresentation1 = userRepresentations.get(0);
     }
