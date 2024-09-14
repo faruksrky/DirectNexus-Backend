@@ -32,9 +32,9 @@ public class KeycloakConfig {
     @Bean
     public Keycloak keycloak(){
         return KeycloakBuilder.builder()
-                .clientSecret(clientSecret)
+                .clientSecret(adminClientSecret)
                 .serverUrl(serverUrl)
-                .clientId(clientId)
+                .clientId(adminClientId)
                 .realm(realm)
                 .grantType("client_credentials")
                 .build();
