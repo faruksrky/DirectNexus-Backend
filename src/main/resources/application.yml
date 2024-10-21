@@ -8,7 +8,7 @@ spring:
           issuer-uri: ${app.keycloak.serverUrl}/realms/${app.keycloak.realm}
           jwk-set-uri: ${app.keycloak.serverUrl}/realms/${app.keycloak.realm}/protocol/openid-connect/certs
 server:
-  port: 8443
+  port: 6700
 
 app:
   keycloak:
