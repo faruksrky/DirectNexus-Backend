@@ -2,7 +2,6 @@ package com.keycloak.keycloak_auth_service.controller;
 
 import com.keycloak.keycloak_auth_service.dto.request.UserRequest;
 import com.keycloak.keycloak_auth_service.dto.response.UserResponse;
-import com.keycloak.keycloak_auth_service.entity.NewUserRecord;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
