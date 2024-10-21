@@ -7,17 +7,15 @@ spring:
         jwt:
           issuer-uri: ${app.keycloak.serverUrl}/realms/${app.keycloak.realm}
           jwk-set-uri: ${app.keycloak.serverUrl}/realms/${app.keycloak.realm}/protocol/openid-connect/certs
-
-
 server:
   port: 6700
-
-
 
 app:
   keycloak:
     admin:
       clientId: DN
-      clientSecret: j0t6IMje7f8uiLQ8zwl1U4CwrwYEYcn2
+      clientSecret: jwsWp8mjAPxLdA8jew4yTy8mmIzzKilu
+      adminClientId: admin-cli
+      adminClientSecret: PR3zwHqXHp0R8YB4WN86gkgtCvNRdEfZ
     realm: DirectNexus
-    serverUrl: http://localhost:9082
+    serverUrl: https://88.99.174.69:8443

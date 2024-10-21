@@ -25,6 +25,7 @@ public class LoginController {
 
     @PostMapping("/getToken")
     public ResponseEntity<TokenDto> getToken(@RequestParam String username, @RequestParam String password) {
+
         return ResponseEntity.ok(keycloakService.getToken(username, password));
     }
 

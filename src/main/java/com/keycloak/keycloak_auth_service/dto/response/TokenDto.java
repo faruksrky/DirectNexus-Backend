@@ -21,5 +21,4 @@ public class TokenDto {
     private String tokenType;
     private String sessionState;
     private String scope;
-
 }

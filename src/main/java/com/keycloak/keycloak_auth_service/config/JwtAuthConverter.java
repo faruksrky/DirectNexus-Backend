@@ -20,7 +20,6 @@ import java.util.stream.Stream;
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
     private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
 
-
     @Override
     public AbstractAuthenticationToken convert(Jwt jwt) {
         Collection<GrantedAuthority> authorities = Stream.concat(

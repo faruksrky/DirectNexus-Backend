@@ -1,5 +1,8 @@
 package com.keycloak.keycloak_auth_service.controller;
 
+import com.keycloak.keycloak_auth_service.dto.request.UserRequest;
+import com.keycloak.keycloak_auth_service.dto.response.UserResponse;
+import com.keycloak.keycloak_auth_service.entity.NewUserRecord;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,8 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.keycloak.keycloak_auth_service.service.UserService;
-import com.keycloak.keycloak_auth_service.entity.NewUserRecord;
 
+import java.util.List;
 
 
 @RestController
@@ -20,8 +23,8 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody NewUserRecord newUserRecord) {
-        userService.createUser(newUserRecord);
+    public ResponseEntity<?> createUser(@RequestBody UserRequest userRequest) {
+        userService.createUser(userRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -46,17 +49,20 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-
-    @GetMapping("/{id}/roles")
-    public ResponseEntity<?> getUserRoles(@PathVariable String id) {
-
-        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserRoles(id));
+    @GetMapping("/all")
+    public ResponseEntity<List<UserResponse>> getAllUsers() {
+        List<UserResponse> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
     }
 
-    @GetMapping("/{id}/groups")
-    public ResponseEntity<?> getUserGroups(@PathVariable String id) {
-
-        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserGroups(id));
+        @GetMapping("/userInfo")
+    public ResponseEntity<?> getUserInfoByToken(@RequestBody String accessToken) {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserInfoByToken(accessToken));
     }
 
+    @GetMapping("/usernames")
+    public ResponseEntity<List<String>> getAllUsernames() {
+        List<String> usernames = userService.getAllUsernames();
+        return ResponseEntity.ok(usernames);
+    }
 }
