@@ -28,7 +28,7 @@ public class WebConfig implements WebMvcConfigurer {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.cors(cors -> cors.configurationSource(request -> {
             var corsConfiguration = new org.springframework.web.cors.CorsConfiguration();
-            corsConfiguration.setAllowedOrigins(List.of("https://88.99.174.69"));
+            corsConfiguration.setAllowedOrigins(List.of("http://localhost:3031"));
             corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
             corsConfiguration.setAllowedHeaders(List.of("*"));
             corsConfiguration.setAllowCredentials(true);

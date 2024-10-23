@@ -14,8 +14,8 @@ app:
   keycloak:
     admin:
       clientId: DN
-      clientSecret: jwsWp8mjAPxLdA8jew4yTy8mmIzzKilu
+      clientSecret: j0t6IMje7f8uiLQ8zwl1U4CwrwYEYcn2
       adminClientId: admin-cli
-      adminClientSecret: PR3zwHqXHp0R8YB4WN86gkgtCvNRdEfZ
+      adminClientSecret: rrMwWItaX6D766ITAfFpxYDREk2U7p6L
     realm: DirectNexus
-    serverUrl: https://88.99.174.69:8443
+    serverUrl: http://localhost:9082
