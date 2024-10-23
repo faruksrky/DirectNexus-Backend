@@ -15,12 +15,12 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
-@Configuration
+
 @EnableWebSecurity
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class WebConfig {
-
+/*
     private final JwtAuthConverter jwtAuthConverter;
 
     @Bean
@@ -46,4 +46,7 @@ public class WebConfig {
 
         return http.build();
     }
+
+ */
+
 }
