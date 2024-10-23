@@ -14,8 +14,8 @@ app:
   keycloak:
     admin:
       clientId: DN
-      clientSecret: jwsWp8mjAPxLdA8jew4yTy8mmIzzKilu
+      clientSecret: mv500tThtNip1DFystTsF3vKrCA6cDW9
       adminClientId: admin-cli
-      adminClientSecret: PR3zwHqXHp0R8YB4WN86gkgtCvNRdEfZ
+      adminClientSecret: mv500tThtNip1DFystTsF3vKrCA6cDW9
     realm: DirectNexus
-    serverUrl: https://88.99.174.69:8443
+    serverUrl: https://keycloak.boostergin.com
