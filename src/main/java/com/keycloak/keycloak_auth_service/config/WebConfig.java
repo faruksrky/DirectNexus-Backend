@@ -20,7 +20,7 @@ import java.util.List;
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class WebConfig {
-/*
+
     private final JwtAuthConverter jwtAuthConverter;
 
     @Bean
@@ -46,7 +46,4 @@ public class WebConfig {
 
         return http.build();
     }
-
- */
-
 }
