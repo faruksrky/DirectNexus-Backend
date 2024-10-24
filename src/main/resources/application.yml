@@ -16,6 +16,6 @@ app:
       clientId: DN
       clientSecret: mv500tThtNip1DFystTsF3vKrCA6cDW9
       adminClientId: admin-cli
-      adminClientSecret: mv500tThtNip1DFystTsF3vKrCA6cDW9
+      adminClientSecret: vwFAPRfDKTOLJcKMpO8B1l5eQEHh02dG
     realm: DirectNexus
     serverUrl: https://keycloak.boostergin.com
